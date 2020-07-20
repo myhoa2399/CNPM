@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sản phẩm</title>
+    <link ref="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet"/>
+</head>
+<body>
+    <h1> Quản lý sản phẩm</h1>
+    <form action="{{url_for('products_list')}}">
+        <div>
+            <input type="text" name="keyword" placeholder="Nhập từ khóa cần tìm ...."/>
+
+        </div>
+        <div>
+            <input type="number" name="from_price" placeholder="From price"/>
+            <input type="number" name="to_price" placeholder="To price"/>
+
+        </div>
+    </form>
+    <table border="1" width="100%">
+        {% for p in prod %}
+        <tr>
+            <td>
+                <img src="{{ p.image }}" alt="{{p.name}}" width="20%"/>
+            </td>
+            <td>
+                <h1> {{ p.name }}</h1>
+            </td>
+            <td>
+                {{p.description}}
+            </td>
+            <td>
+                {{p.price}}VNĐ
+            </td>
+            <td>
+                <a href="#"> Cập nhật</a>   |
+                <a href="#"> Xóa</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
